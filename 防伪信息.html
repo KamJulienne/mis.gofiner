@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!-- saved from url=(0103)http://mis.gofiner.com/GF_Tax/OutSidePage/QRReportContent?keyValue=95379ebb-c89d-4983-83cd-8f30965d0508 -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="”renderer”" content="”webkit|ie-comp|ie-stand”">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="renderer" content="webkit">
+    <link rel="icon" href="http://mis.gofiner.com/favicon.ico">
+
+    <title>防伪信息</title>
+    <link href="./防伪信息_files/font-awesome.min.css" rel="stylesheet">
+    <style>
+        
+    </style>
+
+    <style>body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:20px;color:#333;background-color:#fff}.bigdiv{margin:10px 15px;padding:10px;border-radius:5px;background:#fbefe0}#resultbox{padding:10px;font-weight:bold;border-bottom:1px solid #fff;font-size:14px}.text-left{text-align:left}.displaynone{display:none}.bottomdiv{font-size:12px;width:100%;display:inline-block;text-align:center;border:5px}.bottomdiv p{background:#fbefe0;padding:10px;margin:10px 15px;border-radius:5px}</style>
+    <script src="./防伪信息_files/jquery-1.10.2.min.js.下载"></script>
+    <script>
+        function request(d) { for (var c = location.search.slice(1).split("&"), a = 0; a < c.length; a++) { var b = c[a].split("="); if (b[0] == d) if ("undefined" == unescape(b[1])) break; else return unescape(b[1]) } return "" };
+    </script>
+</head>
+<body class="Chrome 109.0 lr-uitheme-default" style="position: static;">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="content">
+
+                <form style="margin: 50px 10px 10px 10px;">
+                    <div id="reportnum" style="display: none;">
+                        <div class="form-group">
+                            <label for="ReportNumber" style="float: left; padding: 5px 10px;">请输入报告号:</label>
+                            <input type="text" class="form-control" id="ReportNumber" placeholder="报告号数字部分">
+                        </div>
+                        <button type="button" class="btn btn-primary btn-block" id="submitbtn" style="width: 80%; margin: 0 auto; line-height: 30px; font-size: 1rem;">立即查验</button>
+                    </div>
+                </form>
+                <div class="bigdiv">
+                    <p id="resultbox" class="text-left">项目结果：</p>
+                    <p class="text-left" id="result" style="border-bottom: none;font-size:14px;">物业名称1：深圳国际商会大厦0915
+<br> 单价：45400.00
+<br> 建筑面积：51.020
+<br> 评估总值：2316308.00
+<br>物业名称2：深圳国际商会大厦0916
+<br> 单价：45400.00
+<br> 建筑面积：51.020
+<br> 评估总值：2316308.00
+<br>物业名称3：深圳国际商会大厦0917
+<br> 单价：45400.00
+<br> 建筑面积：52.560
+<br> 评估总值：23862244.00
+<br>物业名称4：深圳国际商会大厦0918
+<br> 单价：45400.00
+<br> 建筑面积：86.820
+<br> 评估总值：3941628.00
+<br>物业名称5：深圳国际商会大厦0919
+<br> 单价：45400.00
+<br> 建筑面积：37.380
+<br> 评估总值：1697052.00
+<br>物业名称6：深圳国际商会大厦0920
+<br> 单价：45400.00
+<br> 建筑面积：96.970
+<br> 评估总值：4402438.00
+<br>评估总值合计：17059958.00
+<br>建筑面积合计：375.770平方米
+<br>土地面积：-
+<br>---------------------------
+<br>防伪联系人：邓湘
+<br>防伪联系电话：4006236336
+<br><br></p>
+                    <!-- <div id="picturebox" class="displaynone">
+                        <p class="text-left picsty">查勘照片：</p>
+                        <ul id="ishow">
+                            
+                        </ul>
+                    </div>
+                    <div id="videobox" class="displaynone">
+                        <p class="text-left picsty">查勘视频：</p><div style="color:red;">(如视频在微信不能正常播放，请在浏览器中打开)</div>
+                        <div id="videoshow">
+                        </div>
+                    </div> -->
+                </div>
+                <div class="bottomdiv">
+                    <p>
+                        请下拉当前页面确认文字是否为：
+                        <span style="display: block; font-weight: bold;">“网页由mis.gofiner.com提供”,</span>
+                        否则为伪造
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>/* 
+ * 创建人：超级管理员
+ * 日  期：2020-08-25 09:50
+ * 描  述：ReportManger
+ */
+var keyValue = request('keyValue');
+var bootstrap = function ($, learun) {
+    "use strict";
+    var page = {
+        init: function () {
+            page.initData();
+        },
+        bind: function () {
+            // 刷新
+            $('#lr_refresh').on('click', function () {
+                location.reload();
+            });
+        },
+        initData: function() {
+            if (!!keyValue) {
+                $.ajax({
+                    url: "http://" + window.location.host + '/GF_Tax/OutSidePage/GetReportData',
+                    data: { keyValue: keyValue },
+                    type: 'GET',
+                    dataType: "json",
+                    async: false,
+                    cache: false,
+                    success: function (res) {
+                        var content = res.data.F_QRContent;
+                        var arr = content.split("\n");
+                        var str = "";
+                        for (var item of arr) {
+                            str += item + '<br>';
+                        }
+                        //document.getElementById('result').innerHTML = str1;
+                        $('#result').html(str);
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(textStatus);
+                    },
+                    beforeSend: function () {
+                    },
+                    complete: function () {
+                    }
+                });
+                $.ajax({
+                    url: "http://" + window.location.host + '/GF_Tax/OutSidePage/GetSurveyPhotoCount',
+                    data: { keyValue: keyValue },
+                    type: 'GET',
+                    dataType: "json",
+                    async: true,
+                    cache: false,
+                    success: function (res) {
+                        var photoList = res.data;
+                        if (photoList && photoList.length > 0) {
+                            $('#picturebox').removeClass('displaynone');
+                            var $ul = $('#ishow');
+                            for (var i = 0; i < photoList.length; i++) {
+                                var $li = "<li><img src=http://" + window.location.host + "/GF_Tax/OutSidePage/GetSurveyImg?keyValue=" + photoList[i] + " /></li>";
+                                $ul.prepend($li);
+                            }
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(textStatus);
+                    },
+                    beforeSend: function () {
+                    },
+                    complete: function () {
+                    }
+                });
+            }
+        }
+    };
+    page.init();
+}
+</script>
+<script>
+    $.lrToken = $('<input name="__RequestVerificationToken" type="hidden" value="FGTz1BbpQL_s9QZG2wsZcZrJVnV5VnYjzJ6DZm6PqHS1pzTl11zq4pZhXos6vSCBu8FP_JuyTNhJO-UyudR5LbypYLQU39aVdnj364tMRDQ1" />').val();
+    $(function () {
+        // $('#lr_form_bg').fadeOut();
+        if (!!window.bootstrap) {
+            bootstrap(jQuery, top.learun);       
+        }
+    });
+</script>
+
+
+
+<div style="position: static; display: none; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>
